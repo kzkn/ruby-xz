@@ -2,6 +2,7 @@
 
 == 1.0.1 (Not yet released)
 * Fix a buffer overflow error in XZ::Stream (PR Quintus#17 by genail)
+* Fix an issue with transcode_options that was introduced by Ruby 3 (PR win93#1 by Alex Gittemeier)
 * Update project README, gemspec, and other metadata to reflect a change in
   maintainership. All prior releases were released by Marvin Gülker.
 
