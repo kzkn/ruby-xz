@@ -1,5 +1,9 @@
 = Version history
 
+== 1.0.1 (Not yet released)
+* Update project README, gemspec, and other metadata to reflect a change in
+  maintainership. All prior releases were released by Marvin Gülker.
+
 == 1.0.0 (2018-05-20)
 
 * *BreakingChange* The XZ module's methods now take any parameters

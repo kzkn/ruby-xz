@@ -38,10 +38,10 @@ Since fiddle is used to implement the bindings, no compilation
 is needed.
 DESCRIPTION
   spec.version               = XZ::VERSION.gsub("-", ".")
-  spec.author                = "Marvin Gülker"
-  spec.email                 = "m-guelker@phoenixmail.de"
+  spec.authors               = ['Marvin Gülker', 'Alex Gittemeier']
+  spec.email                 = 'me@a.lexg.dev'
   spec.license               = "MIT"
-  spec.homepage              = "https://mg.guelker.eu/projects/ruby-xz/"
+  spec.homepage              = "https://github.com/win93/ruby-xz"
   spec.platform              = Gem::Platform::RUBY
   spec.required_ruby_version = ">=2.3.0"
   spec.add_development_dependency("minitar", "~> 0.6")
