@@ -1,6 +1,6 @@
 = Version history
 
-== 1.0.1 (Not yet released)
+== 1.0.1 (2021-11-13)
 * Fix a buffer overflow error in XZ::Stream (PR Quintus#17 by genail)
 * Fix an issue with transcode_options that was introduced by Ruby 3 (PR win93#1 by Alex Gittemeier)
 * Update project README, gemspec, and other metadata to reflect a change in
