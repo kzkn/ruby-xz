@@ -218,7 +218,7 @@ class StreamReaderTest < Minitest::Test
 
     reader.set_encoding "UTF-8"
     assert_equal Encoding::UTF_8, reader.external_encoding
-    assert_equal nil, reader.internal_encoding
+    assert_nil reader.internal_encoding
 
     reader.set_encoding "ISO-8859-1:UTF-8"
     assert_equal Encoding::ISO_8859_1, reader.external_encoding
@@ -226,7 +226,7 @@ class StreamReaderTest < Minitest::Test
 
     reader.set_encoding Encoding::UTF_8
     assert_equal Encoding::UTF_8, reader.external_encoding
-    assert_equal nil, reader.internal_encoding
+    assert_nil reader.internal_encoding
 
     reader.set_encoding Encoding::UTF_8, Encoding::ISO_8859_1
     assert_equal Encoding::UTF_8, reader.external_encoding
@@ -234,7 +234,7 @@ class StreamReaderTest < Minitest::Test
 
     reader.set_encoding "ISO-8859-1", {:invalid => :replace, :replace => "?"}
     assert_equal Encoding::ISO_8859_1, reader.external_encoding
-    assert_equal nil, reader.internal_encoding
+    assert_nil reader.internal_encoding
 
     reader.set_encoding "ISO-8859-1", "UTF-8", {:invalid => :replace, :replace => "?"}
     assert_equal Encoding::ISO_8859_1, reader.external_encoding

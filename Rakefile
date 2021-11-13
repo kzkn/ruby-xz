@@ -25,11 +25,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 =end
 
+require 'bundler/setup'
 require "rake/testtask"
 require "rubygems/package_task"
 require "rdoc/task"
-
-load "ruby-xz.gemspec"
 
 Gem::PackageTask.new(GEMSPEC).define
 

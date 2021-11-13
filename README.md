@@ -1,64 +1,62 @@
-ruby-xz
-=======
+# ruby-xz
 
-**ruby-xz** is a basic binding to the famous [liblzma library][1],
-best known for the extreme compression-ratio it's native *XZ* format
-achieves. ruby-xz gives you the possibility of creating and extracting
-XZ archives on any platform where liblzma is installed. No compilation
-is needed, because ruby-xz is written on top of Ruby's “fiddle” library
-(part of the standard libary). ruby-xz does not have any dependencies
-other than Ruby itself.
+**ruby-xz** is a basic binding to the famous [liblzma] library,
+best known for the extreme compression-ratio it's native *XZ* format achieves.
+ruby-xz gives you the possibility of creating and extracting XZ archives on any
+platform where liblzma is installed.
+No compilation is needed, because ruby-xz is written on top of Ruby's [fiddle]
+library (part of the standard library).
+ruby-xz does not have any dependencies other than Ruby itself.
 
-ruby-xz supports both “intuitive” (de)compression by providing methods to
-directly operate on strings and files, but also allows you to operate
-directly on IO streams (see the various methods of the XZ module). On top
-of that, ruby-xz offers an advanced interface that allows you to treat
-XZ-compressed data as IO streams, both for reading and for writing. See the
-XZ::StreamReader and XZ::StreamWriter classes for more information on this.
+rubv-xz supports compression and decompression via methods that operate on
+strings and files, and it also supports compression and decompression on IO
+streams.
+the XZ::StreamReader and XZ::StreamWriter offer advanced interfaces that allow
+you to treat XZ-compressed data as IO streams, both for reading and for writing.
+<!-- TODO: link to relevant parts of the source code and/or documentation  -->
 
-**Note**: Version 1.0.0 breaks the API quite heavily. Refer to
-HISTORY.rdoc for details.
+**Note**: Version 1.0.0 breaks the API quite heavily.
+Refer to HISTORY.rdoc for details.
 
-Installation
-------------
+## Installation
 
-Install it the way you install all your gems.
+Install with `gem` from your Ruby installation:
 
-```
-$ gem install ruby-xz
+```sh
+gem install ruby-xz
 ```
 
-Alternatively, you can clone the repository and build the most recent
-code yourself:
+Alternatively, add it to your Gemfile via:
 
-```
-$ git clone git://git.guelker.eu/ruby-xz.git
-$ cd ruby-xz
-$ rake gem
-$ gem install pkg/ruby-xz-*.gem
+```sh
+bundle add ruby-xz
 ```
 
-Usage
------
+If you want to be on the bleeding edge, you can clone the repository and build
+the most recent code yourself:
 
-The documentation of the XZ module is well and you should be able to find
-everything you need to use ruby-xz. As said, it's not big, but powerful:
-You can create and extract whole archive files, compress or decompress
-streams of data or just plain strings.
+```sh
+git clone https://github.com/win93/ruby-xz.git
+cd ruby-xz
+rake gem
+gem install pkg/ruby-xz-*.gem
+```
 
-You can read the documentation on your local gemserver, or browse it [online][2].
+## Usage
 
-### Require ###
+You should be able to find everything you need to use ruby-xz in the
+documentation.
+It's small but powerful: You can create and extract whole archive files,
+compress or decompress whole files, strings, or streams of data.
 
-You have to require the “xz.rb” file:
+You can read the documentation on your local gemserver, or browse it [online][rubydoc].
+ <!-- TODO how do I read the docs on my local gemserver? -->
+
+### Examples
 
 ``` ruby
-require "xz"
-```
+require 'xz'
 
-### Examples ###
-
-``` ruby
 # Compress a file
 XZ.compress_file("myfile.txt", "myfile.txt.xz")
 # Decompress it
@@ -74,16 +72,17 @@ comp = XZ.compress("Mydata")
 data = XZ.decompress(comp)
 ```
 
-Have a look at the XZ module's documentation for an in-depth description of
-what is possible.
+Have a look at the XZ module's documentation for an in-depth description of what
+is possible.
+<!-- TODO link to such documentation -->
 
-### Usage with the minitar gem ###
+### Usage with the minitar gem
 
-ruby-xz can be used together with the [minitar][3] library (formerly
-“archive-tar-minitar”) to create XZ-compressed tarballs. This works by
-employing the IO-like classes XZ::StreamReader and XZ::StreamWriter
-analogous to how one would use Ruby's “zlib” library together with
-“minitar”. Example:
+ruby-xz can be used together with the [minitar] library (formerly
+“archive-tar-minitar”) to create XZ-compressed tarballs.
+This works by employing the IO-like classes XZ::StreamReader and
+XZ::StreamWriter analogous to how one would use Ruby's “zlib” library together
+with “minitar”:
 
 ``` ruby
 require "xz"
@@ -100,19 +99,24 @@ XZ::StreamReader.open("tarball.tar.xz") do |txz|
 end
 ```
 
-Links
------
+## Links
 
-* Website: https://mg.guelker.eu/projects/ruby-xz/
-* Online documentation: https://mg.guelker.eu/projects/ruby-xz/doc
-* Code repository: https://git.guelker.eu/?p=ruby-xz.git;a=summary
-* Issue tracker: https://github.com/Quintus/ruby-xz/issues
+* Online documentation: <https://rubydoc.info/gems/ruby-xz>
+* Code repository: <https://github.com/win93/ruby-xz>
+* Issue tracker: <https://github.com/win93/ruby-xz/issues>
 
-License
--------
+## License
 
 MIT license; see LICENSE for the full license text.
 
-[1]: https://tukaani.org/xz/
-[2]: https://mg.guelker.eu/projects/ruby-xz/doc
-[3]: https://github.com/halostatue/minitar
+## Acknowledgements
+
+On November 2021, I volunteered to take over maintenance of this project, which
+was forked from <https://github.com/Quintus/ruby-xz>.
+@Quintus maintained this project until 1.0.0, see HISTORY.rdoc for more details.
+
+
+[fiddle]: https://github.com/ruby/fiddle
+[liblzma]: https://tukaani.org/xz/
+[rubydoc]: https://www.rubydoc.info/gems/ruby-xz
+[minitar]: https://github.com/halostatue/minitar
