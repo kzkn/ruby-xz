@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # -*- mode: ruby; coding: utf-8 -*-
 #--
 # Basic liblzma-bindings for Ruby.
@@ -25,33 +26,41 @@
 # THE SOFTWARE.
 #++
 
-require_relative "lib/xz/version"
+require_relative 'lib/xz/version'
 
 GEMSPEC = Gem::Specification.new do |spec|
-  spec.name        = "ruby-xz"
-  spec.summary     = "XZ compression via liblzma for Ruby, using fiddle."
-  spec.description =<<DESCRIPTION
-These are simple Ruby bindings for the liblzma library
-(http://tukaani.org/xz/), which is best known for the
-extreme compression ratio its native XZ format achieves.
-Since fiddle is used to implement the bindings, no compilation
-is needed.
-DESCRIPTION
-  spec.version               = XZ::VERSION.gsub("-", ".")
-  spec.authors               = ['Marvin Gülker', 'Alex Gittemeier']
-  spec.email                 = 'me@a.lexg.dev'
-  spec.license               = "MIT"
-  spec.homepage              = "https://github.com/win93/ruby-xz"
-  spec.platform              = Gem::Platform::RUBY
-  spec.required_ruby_version = ">=2.3.0"
-  spec.files.concat(Dir["lib/**/*.rb"])
-  spec.files.concat(Dir["**/*.rdoc"])
-  spec.files << "README.md" << "LICENSE" << "AUTHORS"
-  spec.extra_rdoc_files = %w[README.md HISTORY.rdoc LICENSE AUTHORS]
-  spec.rdoc_options << "-t" << "ruby-xz RDocs" << "-m" << "README.md"
-  spec.post_install_message = "Version 1.0.0 of ruby-xz breaks the API. Read HISTORY.rdoc and adapt your code to the new API."
+  spec.name        = 'ruby-xz'
+  spec.version     = XZ::VERSION
+  spec.summary     = 'XZ compression via liblzma for Ruby, using fiddle.'
+  spec.description = <<~DESCRIPTION
+    These are simple Ruby bindings for the liblzma library
+    (http://tukaani.org/xz/), which is best known for the
+    extreme compression ratio its native XZ format achieves.
+    Since fiddle is used to implement the bindings, no compilation
+    is needed.
+  DESCRIPTION
+  spec.authors     = ['Marvin Gülker', 'Alex Gittemeier']
+  spec.email       = 'me@a.lexg.dev'
+  spec.license     = 'MIT'
 
-  spec.add_development_dependency "minitar", "~> 0.6"
-  spec.add_development_dependency "rake", "~> 13.0"
-  spec.add_development_dependency "minitest", "~> 5.14"
+  spec.metadata['homepage_uri']          = 'https://github.com/win93/ruby-xz'
+  spec.metadata['source_code_uri']       = 'https://github.com/win93/ruby-xz/tree/stable'
+  spec.metadata['documentation_uri']     = 'https://www.rubydoc.info/gems/ruby-xz'
+  spec.metadata['bug_tracker_uri']       = 'https://github.com/win93/ruby-xz/issues'
+  spec.metadata['changelog_uri']         = 'https://github.com/win93/ruby-xz/blob/stable/HISTORY.rdoc'
+  spec.metadata['rubygems_mfa_required'] = 'true'
+  spec.homepage = spec.metadata['homepage_uri']
+
+  spec.files = Dir['lib/**/*.rb'] + %w[README.md HISTORY.rdoc LICENSE AUTHORS]
+
+  spec.extra_rdoc_files.concat %w[README.md HISTORY.rdoc LICENSE AUTHORS]
+  spec.rdoc_options << '-t' << 'ruby-xz RDocs' << '-m' << 'README.md'
+
+  spec.required_ruby_version = '>= 2.3.0'
+  spec.platform              = Gem::Platform::RUBY
+  spec.post_install_message  = 'Version 1.0.0 of ruby-xz breaks the API. Read HISTORY.rdoc and adapt your code to the new API.'
+
+  spec.add_development_dependency 'minitar', '~> 0.6'
+  spec.add_development_dependency 'minitest', '~> 5.14'
+  spec.add_development_dependency 'rake', '~> 13.0'
 end
