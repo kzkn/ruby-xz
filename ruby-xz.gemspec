@@ -47,7 +47,6 @@ DESCRIPTION
   spec.files.concat(Dir["lib/**/*.rb"])
   spec.files.concat(Dir["**/*.rdoc"])
   spec.files << "README.md" << "LICENSE" << "AUTHORS"
-  spec.has_rdoc         = true
   spec.extra_rdoc_files = %w[README.md HISTORY.rdoc LICENSE AUTHORS]
   spec.rdoc_options << "-t" << "ruby-xz RDocs" << "-m" << "README.md"
   spec.post_install_message = "Version 1.0.0 of ruby-xz breaks the API. Read HISTORY.rdoc and adapt your code to the new API."
