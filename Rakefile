@@ -27,11 +27,10 @@ THE SOFTWARE.
 
 require 'bundler/setup'
 require "rake/testtask"
-require "rubygems/package_task"
 require "rdoc/task"
+require 'bundler/gem_tasks'
 
-Gem::PackageTask.new(GEMSPEC).define
-
+# Documentation
 Rake::RDocTask.new do |rd|
   rd.rdoc_files.include("lib/**/*.rb", "*.md", "**/*.rdoc", "LICENSE", "AUTHORS")
   rd.title = "ruby-xz RDocs"
@@ -40,7 +39,10 @@ Rake::RDocTask.new do |rd|
   rd.rdoc_dir = "doc"
 end
 
+# Testing
 Rake::TestTask.new do |t|
   t.test_files = FileList["test/test_*.rb"]
   t.warning = true
 end
+
+task default: [:test]

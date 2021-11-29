@@ -1,0 +1,70 @@
+image: ruby:3.0-alpine
+variables:
+  BUNDLE_PATH: vendor/bundle
+  BUNDLE_DEPLOYMENT: "true"
+before_script:
+  - ruby --version
+  - test -d vendor/apk || (mkdir -p vendor && cp -r /var/cache/apk vendor/)
+  - rm -rf /var/cache/apk
+  - ln -s "$PWD"/vendor/apk /var/cache/
+  - apk add git xz
+  - gem install bundler -v 2.2.31
+  - bundle install || (apk add gcc g++ make && bundle install)
+cache:
+  key: global-dependency-cache
+  paths:
+    - vendor/
+
+stages:
+  - test
+
+test ruby-3.1-rc:
+  image: ruby:3.1-rc-alpine
+  stage: test
+  script:
+    - bundle exec rake
+
+test ruby-3.0:
+  image: ruby:3.0-alpine
+  stage: test
+  script:
+    - bundle exec rake
+
+test ruby-2.7:
+  image: ruby:2.7-alpine
+  stage: test
+  script:
+    - bundle exec rake
+
+test ruby-2.6:
+  image: ruby:2.6-alpine
+  stage: test
+  script:
+    - bundle exec rake
+
+test ruby-2.5:
+  image: ruby:2.5-alpine
+  stage: test
+  script:
+    - bundle exec rake
+
+test ruby-2.4:
+  image: ruby:2.4-alpine
+  stage: test
+  script:
+    - bundle exec rake
+
+
+test ruby-2.3:
+  image: ruby:2.3-alpine
+  stage: test
+  script:
+    - bundle exec rake
+
+check for bundle updates:
+  stage: test
+  variables:
+    BUNDLE_DEPLOYMENT: "false"
+  script:
+    - bundle outdated
+  allow_failure: true

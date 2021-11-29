@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # -*- coding: utf-8 -*-
 #--
 # Basic liblzma-bindings for Ruby.
@@ -26,8 +27,6 @@
 #++
 
 module XZ
-
   # The version of this library.
-  VERSION = "1.0.1".freeze
-
+  VERSION = "1.0.1"
 end
