@@ -110,8 +110,9 @@ To release a new version:
 - Switch to the `development` branch.
 - Bump `lib/xz/version.rb`, run `bundle install`, then commit the result.
 - Switch to the `stable` branch.
-- Then run `rake release`, which will create/push a git tag and publish the
-  `.gem` file to [rubygems.org].
+- Run `git merge --no-ff development`
+- Run `rake release`, which will create/push a git tag and publish the `.gem`
+  file to [rubygems.org].
 
 [rubygems.org]: https://rubygems.org
 

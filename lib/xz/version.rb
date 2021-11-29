@@ -28,5 +28,5 @@
 
 module XZ
   # The version of this library.
-  VERSION = "1.0.1"
+  VERSION = '1.0.2'
 end
