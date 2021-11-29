@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ruby-xz (1.0.0)
+    ruby-xz (1.0.2)
 
 GEM
   remote: https://rubygems.org/

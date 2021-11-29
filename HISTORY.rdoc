@@ -1,5 +1,8 @@
 = Version history
 
+== 1.0.2 (2021-11-28)
+* Fix a deprecation warning and some other gemspec concerns (PR win93#6 by Alex Gittemeier)
+
 == 1.0.1 (2021-11-13)
 * Fix a buffer overflow error in XZ::Stream (PR Quintus#17 by genail)
 * Fix an issue with transcode_options that was introduced by Ruby 3 (PR win93#1 by Alex Gittemeier)

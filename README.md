@@ -99,6 +99,23 @@ XZ::StreamReader.open("tarball.tar.xz") do |txz|
 end
 ```
 
+## Development
+
+After checking out the repo, run `bundle install` to install dependencies.
+
+To install this gem onto your local machine, run `rake install`.
+
+To release a new version:
+
+- Switch to the `development` branch.
+- Bump `lib/xz/version.rb`, run `bundle install`, then commit the result.
+- Switch to the `stable` branch.
+- Run `git merge --no-ff development`
+- Run `rake release`, which will create/push a git tag and publish the `.gem`
+  file to [rubygems.org].
+
+[rubygems.org]: https://rubygems.org
+
 ## Links
 
 * Online documentation: <https://rubydoc.info/gems/ruby-xz>
