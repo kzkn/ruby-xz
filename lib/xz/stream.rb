@@ -155,9 +155,9 @@ class XZ::Stream
     # Reset internal state
     @pos = @lineno = 0
     @finished = false
-
-    # Allocate a new lzma stream (subclasses will configure it).
     @lzma_stream = XZ::LibLZMA::LZMAStream.malloc
+    @input_buffer_p  = Fiddle::Pointer.malloc(XZ::CHUNK_SIZE)
+    @output_buffer_p = Fiddle::Pointer.malloc(XZ::CHUNK_SIZE)
     XZ::LibLZMA::LZMA_STREAM_INIT(@lzma_stream)
 
     0 # Mimic IO#rewind's return value
@@ -211,6 +211,9 @@ class XZ::Stream
     # Clean up the lzma_stream structure's internal memory.
     # This would belong into a destructor if Ruby had that.
     XZ::LibLZMA.lzma_end(@lzma_stream)
+    Fiddle.free @lzma_stream.to_ptr
+    Fiddle.free @input_buffer_p
+    Fiddle.free @output_buffer_p
     @finished = true
 
     @delegate_io

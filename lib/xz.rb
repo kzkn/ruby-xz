@@ -218,8 +218,10 @@ module XZ
       end
 
       LibLZMA.lzma_end(stream.to_ptr)
+      res = stream.total_out if block_given?
 
-      block_given? ? stream.total_out : res
+      Fiddle.free stream.to_ptr
+      res
     end
     alias decode_stream decompress_stream
 
@@ -317,8 +319,10 @@ module XZ
       end
 
       LibLZMA.lzma_end(stream.to_ptr)
+      res = stream.total_out if block_given?
 
-      block_given? ? stream.total_out : res
+      Fiddle.free stream.to_ptr
+      res
     end
     alias encode_stream compress_stream
 
@@ -458,8 +462,8 @@ module XZ
     # time--this is needed to allow (de-)compressing of very large
     # files that can't be loaded fully into memory.
     def lzma_code(io, stream)
-      input_buffer_p  = Fiddle::Pointer.malloc(CHUNK_SIZE) # automatically freed by fiddle on GC
-      output_buffer_p = Fiddle::Pointer.malloc(CHUNK_SIZE) # automatically freed by fiddle on GC
+      input_buffer_p  = Fiddle::Pointer.malloc(CHUNK_SIZE)
+      output_buffer_p = Fiddle::Pointer.malloc(CHUNK_SIZE)
 
       while str = io.read(CHUNK_SIZE)
         input_buffer_p[0, str.bytesize] = str
@@ -502,6 +506,9 @@ module XZ
           break unless stream.avail_out == 0
         end #loop
       end #while
+
+      Fiddle.free input_buffer_p
+      Fiddle.free output_buffer_p
     end #lzma_code
 
     # Checks for errors and warnings that can be derived from the
