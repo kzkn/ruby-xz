@@ -7,11 +7,11 @@ GEM
   remote: https://rubygems.org/
   specs:
     minitar (0.9)
-    minitest (5.14.4)
+    minitest (5.15.0)
     rake (13.0.6)
 
 PLATFORMS
-  x86_64-darwin-19
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -21,4 +21,4 @@ DEPENDENCIES
   ruby-xz!
 
 BUNDLED WITH
-   2.2.22
+   2.3.7

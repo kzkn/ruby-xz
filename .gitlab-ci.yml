@@ -1,4 +1,4 @@
-image: ruby:3.0-alpine
+image: ruby:3.1-alpine
 variables:
   BUNDLE_PATH: vendor/bundle
   BUNDLE_DEPLOYMENT: "true"
@@ -8,7 +8,7 @@ before_script:
   - rm -rf /var/cache/apk
   - ln -s "$PWD"/vendor/apk /var/cache/
   - apk add git xz
-  - gem install bundler -v 2.2.31
+  - gem install bundler -v 2.3.7
   - bundle install || (apk add gcc g++ make && bundle install)
 cache:
   key: global-dependency-cache
@@ -18,8 +18,8 @@ cache:
 stages:
   - test
 
-test ruby-3.1-rc:
-  image: ruby:3.1-rc-alpine
+test ruby-3.1:
+  image: ruby:3.1-alpine
   stage: test
   script:
     - bundle exec rake
@@ -46,12 +46,14 @@ test ruby-2.5:
   image: ruby:2.5-alpine
   stage: test
   script:
+    - gem update --system 3.2.3
     - bundle exec rake
 
 test ruby-2.4:
   image: ruby:2.4-alpine
   stage: test
   script:
+    - gem update --system 3.2.3
     - bundle exec rake
 
 
@@ -59,6 +61,7 @@ test ruby-2.3:
   image: ruby:2.3-alpine
   stage: test
   script:
+    - gem update --system 3.2.3
     - bundle exec rake
 
 check for bundle updates:
