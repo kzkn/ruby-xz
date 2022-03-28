@@ -1,11 +1,17 @@
 = Version history
 
+== 1.0.3 (2022-03-28)
+* *Fix* a number of memory leaks by freeing allocated liblzma data structures
+  (Issue Quintus#20 reported by xTRiM, PR win93#7 by Alex Gittemeier)
+
 == 1.0.2 (2021-11-28)
-* Fix a deprecation warning and some other gemspec concerns (PR win93#6 by Alex Gittemeier)
+* *Fix* a deprecation warning and some other gemspec concerns
+  (Issue win93#5, PR win93#6 by Alex Gittemeier)
 
 == 1.0.1 (2021-11-13)
-* Fix a buffer overflow error in XZ::Stream (PR Quintus#17 by genail)
-* Fix an issue with transcode_options that was introduced by Ruby 3 (PR win93#1 by Alex Gittemeier)
+* *Fix* a buffer overflow error in XZ::Stream (PR Quintus#17 by genail)
+* *Fix* an issue with transcode_options that was introduced by Ruby 3
+  (PR win93#1 by Alex Gittemeier)
 * Update project README, gemspec, and other metadata to reflect a change in
   maintainership. All prior releases were released by Marvin Gülker.
 
