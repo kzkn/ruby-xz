@@ -202,7 +202,7 @@ module XZ
 
       LZMAError.raise_if_necessary(res)
 
-      res = ""
+      res = +""
       res.encode!(Encoding::BINARY)
       if block_given?
         res = lzma_code(io, stream) do |chunk|
@@ -310,7 +310,7 @@ module XZ
 
       LZMAError.raise_if_necessary(res)
 
-      res = ""
+      res = +""
       res.encode!(Encoding::BINARY)
       if block_given?
         res = lzma_code(io, stream, &block)

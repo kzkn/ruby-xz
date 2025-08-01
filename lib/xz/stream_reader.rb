@@ -212,7 +212,7 @@ class XZ::StreamReader < XZ::Stream
       # The user's request is in decompressed bytes, so it doesn't matter
       # how much is actually read from the compressed file.
       if @delegate_io.eof?
-        data   = ""
+        data   = +""
         action = XZ::LibLZMA::LZMA_FINISH
       else
         data   = @delegate_io.read(XZ::CHUNK_SIZE)
