@@ -23,6 +23,11 @@ jobs:
         ruby-version: ${{ matrix.ruby_version }}
         bundler-cache: true
 
+    - name: Update rubygem
+      if: ${{ matrix.ruby_version < '2.7' }}
+      run: |
+        gem update --system 3.2.3
+
     - name: Run test
       run: |
         bundle exec rake
