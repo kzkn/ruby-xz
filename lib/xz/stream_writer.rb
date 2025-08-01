@@ -235,7 +235,7 @@ class XZ::StreamWriter < XZ::Stream
   # Like superclass' method, but also ensures liblzma flushes all
   # compressed data to the delegate IO.
   def finish
-    lzma_code("", XZ::LibLZMA::LZMA_FINISH) { |compressed| @delegate_io.write(compressed) }
+    lzma_code(+"", XZ::LibLZMA::LZMA_FINISH) { |compressed| @delegate_io.write(compressed) }
     super
   end
 
