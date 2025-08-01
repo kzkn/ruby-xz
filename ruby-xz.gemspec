@@ -60,5 +60,5 @@ GEMSPEC = Gem::Specification.new do |spec|
   spec.platform              = Gem::Platform::RUBY
   spec.post_install_message  = 'Version 1.0.0 of ruby-xz breaks the API. Read HISTORY.rdoc and adapt your code to the new API.'
 
-  spec.add_dependency 'fiddle', '~> 1.1.8'
+  spec.add_dependency 'fiddle', '~> 1.0.9'
 end
